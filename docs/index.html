@@ -211,20 +211,32 @@
             flex: 1;
         }
 
-        .right-menu-item[data-action="info"] {
+        .right-menu-bottom {
             margin-top: auto;
+            display: flex;
+            justify-content: space-between;
         }
 
         .right-menu-item {
             cursor: pointer;
             line-height: 1.3;
+            display: flex;
+            align-items: last baseline;
+            gap: 6px;
+        }
+
+        .menu-title {
+            flex: 1;
+            min-width: 0;
         }
 
         .menu-year {
             font-size: 10px;
+            line-height: 1;
             opacity: 0.5;
-            vertical-align: middle;
             font-family: 'HAL Timezone Mono', monospace;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .right-menu-item:hover {
@@ -293,6 +305,11 @@
             max-width: 100%;
             max-height: 90vh;
             display: block;
+        }
+
+        .image-modal.small img {
+            max-width: 320px;
+            max-height: 40vh;
         }
 
 
@@ -670,7 +687,7 @@
             background: #ffffff;
             border: 1px solid #000;
             z-index: 500;
-            width: 360px;
+            width: 480px;
             min-width: 120px;
             min-height: 60px;
             resize: both;
@@ -700,9 +717,9 @@
             line-height: 1.4;
         }
 
-        #grain-modal-1 { top: 8vh;  left: calc(50% - 180px); }
-        #grain-modal-2 { top: 38vh; left: calc(50% - 180px); }
-        #grain-modal-3 { top: 68vh; left: calc(50% - 180px); }
+        #grain-modal-1 { top: 8vh;  left: 5%; }
+        #grain-modal-2 { top: 55vh; left: calc(50% - 240px); }
+        #grain-modal-3 { top: 8vh;  right: 5%; }
 
 
         /* ── Notes index ── */
@@ -928,8 +945,9 @@
 
             .mobile-nav-year {
                 font-size: 10px;
+                line-height: 1;
                 opacity: 0.5;
-                vertical-align: middle;
+                vertical-align: baseline;
                 font-family: 'HAL Timezone Mono', monospace;
             }
 
@@ -1157,7 +1175,7 @@
                 </div>
 
                 <div class="sidebar-panel" id="panel-mediumsized-colophon">
-                    Released in <i>Trophy Logic</i> as part of a writing seminar in <i>Critical Studies</i> in Sandberg Instituut in Amsterdam in the Netherlands in May 2026.<br>
+                    Released in <span class="image-trigger" data-image="trophylogic"><i>Trophy Logic</i></span> as part of a writing seminar in <i>Critical Studies</i> in Sandberg Instituut in Amsterdam in the Netherlands in May 2026.<br>
                     <br><br>
                     Thank you to Rouzbeh Shadpey for the editorial advice.
                     
@@ -1198,7 +1216,7 @@
                 </div>
 
                 <div class="sidebar-panel" id="panel-errantry-colophon">
-                    Errantry.<br>
+                    <span class="image-trigger" data-image="errantry_1">Errantry.</span><br>
                     Written and designed by<br>Greta Þorkelsdóttir.<br><br>
                     Published by<br>
                     EKA GD MA.<br><br>Printed in<br>Tallinn, Estonia<br>in 
@@ -1322,14 +1340,17 @@
         <div class="sidebar-right open" id="sidebarRight">
             <div class="sidebar-content">
                 <nav class="right-menu">
-                    <div class="right-menu-item" data-essay="mediumsized">Mediumsized <span class="menu-year">2026</span></div>
-                    <div class="right-menu-item" data-essay="emporium">Emporium or, the Useless Supplement <span class="menu-year">2025</span></div>
-                    <div class="right-menu-item" data-essay="moon">Stop! Look at the Moon <span class="menu-year">2024</span></div>
-                    <div class="right-menu-item" data-essay="errantry">Errantry <span class="menu-year">2023</span></div>
-                    <div class="right-menu-item" data-essay="grain">The Word For World is a Grain of Sand <span class="menu-year">2023</span></div>
-                    <div class="right-menu-item" data-essay="sand">Sand was never meant to think <span class="menu-year">2022</span></div>
+                    <div class="right-menu-item" data-essay="mediumsized"><span class="menu-title">Mediumsized</span><span class="menu-year">2026</span></div>
+                    <div class="right-menu-item" data-essay="emporium"><span class="menu-title">Emporium or, the Useless Supplement</span><span class="menu-year">2025</span></div>
+                    <div class="right-menu-item" data-essay="moon"><span class="menu-title">Stop! Look at the Moon</span><span class="menu-year">2024</span></div>
+                    <div class="right-menu-item" data-essay="errantry"><span class="menu-title">Errantry</span><span class="menu-year">2023</span></div>
+                    <div class="right-menu-item" data-essay="grain"><span class="menu-title">The Word For World is a Grain of Sand</span><span class="menu-year">2023</span></div>
+                    <div class="right-menu-item" data-essay="sand"><span class="menu-title">Sand was never meant to think</span><span class="menu-year">2022</span></div>
                     <div class="right-menu-item" data-action="notes">Notes</div>
-                    <div class="right-menu-item" data-action="info">Info</div>
+                    <div class="right-menu-bottom">
+                        <div class="right-menu-item" data-action="info">Info</div>
+                        <div class="right-menu-item" data-action="refresh">Refresh</div>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -1411,6 +1432,7 @@
             'butthedoor':    { src: 'video/butthedoor.mp4',    label: 'But the door, the door, it won\'t shut!' }
         };
         const imageModalOverlay = document.getElementById('imageModalOverlay');
+        const imageModal        = imageModalOverlay.querySelector('.image-modal');
         const gameModalOverlay  = document.getElementById('gameModalOverlay');
         const gameModalContent  = document.getElementById('gameModalContent');
         const enlargedImage = document.getElementById('enlargedImage');
@@ -1424,6 +1446,14 @@
 
         // Image data
         const imageData = {
+            'trophylogic': {
+                src: 'img/trophylogic.jpg',
+                alt: 'Trophy Logic'
+            },
+            'errantry_1': {
+                src: 'img/errantry_1.png',
+                alt: 'Errantry'
+            },
             'image-meme': {
                 src: 'img/sand.webp',
                 alt: 'A meme that says: Stop programming computers. Sand was never meant to think. That is very cruel to rocks.',
@@ -1443,15 +1473,18 @@
             },
             'crystalpepsi-1': {
                 src: 'img/crystalpepsi-1.png',
-                alt: ''
+                alt: '',
+                small: true
             },
             'crystalpepsi-2': {
                 src: 'img/crystalpepsi-2.png',
-                alt: ''
+                alt: '',
+                small: true
             },
             'crystalpepsi-3': {
                 src: 'img/crystalpepsi-3.png',
-                alt: ''
+                alt: '',
+                small: true
             }
         };
 
@@ -2223,6 +2256,8 @@
             setTimeout(() => {
                 historyContainer.parentElement.scrollLeft = 0;
             }, 10);
+
+            return historyColumn;
         }
 
         // Hide menu items with no essay content
@@ -2359,11 +2394,18 @@
                 link.onmouseenter = () => {
                     enlargedImage.src = data.src;
                     enlargedImage.alt = data.alt;
+                    imageModal.classList.toggle('small', !!data.small);
                     imageModalOverlay.classList.add('open');
-                    addHistoryColumn('Image', link.textContent.trim(), () => {
+                    const col = addHistoryColumn('Image', link.textContent.trim());
+                    col.classList.add('clickable');
+                    col.addEventListener('mouseenter', () => {
                         enlargedImage.src = data.src;
                         enlargedImage.alt = data.alt;
+                        imageModal.classList.toggle('small', !!data.small);
                         imageModalOverlay.classList.add('open');
+                    });
+                    col.addEventListener('mouseleave', () => {
+                        imageModalOverlay.classList.remove('open');
                     });
                 };
                 link.onmouseleave = () => {
@@ -2521,6 +2563,19 @@
                 } else if (action === 'notes') {
                     sidebarRight.classList.remove('open');
                     loadNotes();
+                } else if (action === 'refresh') {
+                    topContent.innerHTML = '';
+                    topBox.classList.add('hidden');
+                    topBox.classList.remove('notes-mode', 'minimized');
+                    footnotesBody.innerHTML = '';
+                    footnotes.classList.add('hidden');
+                    footnotes.classList.remove('minimized');
+                    bibliographyBody.innerHTML = '';
+                    bibliography.classList.add('hidden');
+                    bibliography.classList.remove('minimized');
+                    sidebar.classList.remove('open');
+                    document.querySelectorAll('.grain-modal').forEach(m => m.classList.remove('visible'));
+                    sidebarRight.classList.remove('open');
                 } else if (action === 'info') {
                     if (sidebar.classList.contains('open')) {
                         sidebar.classList.remove('open');
@@ -2625,6 +2680,7 @@
         document.querySelectorAll('.minimize-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                if (btn.classList.contains('grain-modal-close')) return;
                 const targetId = btn.getAttribute('data-target');
                 const targetBox = document.getElementById(targetId);
 
