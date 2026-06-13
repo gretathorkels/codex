@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Codex</title>
+    <title>Emporium</title>
     <style>
 
         /* ── Reset ── */
@@ -211,32 +211,20 @@
             flex: 1;
         }
 
-        .right-menu-bottom {
+        .right-menu-item[data-action="info"] {
             margin-top: auto;
-            display: flex;
-            justify-content: space-between;
         }
 
         .right-menu-item {
             cursor: pointer;
             line-height: 1.3;
-            display: flex;
-            align-items: last baseline;
-            gap: 6px;
-        }
-
-        .menu-title {
-            flex: 1;
-            min-width: 0;
         }
 
         .menu-year {
             font-size: 10px;
-            line-height: 1;
             opacity: 0.5;
+            vertical-align: middle;
             font-family: 'HAL Timezone Mono', monospace;
-            white-space: nowrap;
-            flex-shrink: 0;
         }
 
         .right-menu-item:hover {
@@ -302,11 +290,10 @@
         }
 
         .image-modal img {
-            max-width: 320px;
-            max-height: 60vh;
+            max-width: 100%;
+            max-height: 90vh;
             display: block;
         }
-
 
 
 
@@ -496,55 +483,6 @@
             margin-bottom: 0;
         }
 
-        .essay-media {
-            width: 100%;
-            padding: 15px;
-            -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
-            mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
-            -webkit-mask-size: 0% 0%;
-            mask-size: 0% 0%;
-            -webkit-mask-position: center;
-            mask-position: center;
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-            transition: mask-size 3s ease, -webkit-mask-size 3s ease;
-        }
-
-        .essay-media.revealed {
-            -webkit-mask-size: 280% 280%;
-            mask-size: 280% 280%;
-        }
-
-        .essay-media img {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            display: block;
-        }
-
-        .essay-media-player {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .essay-media-player video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .essay-media-progress {
-            height: 3px;
-            background: rgba(0,0,0,0.15);
-            cursor: pointer;
-        }
-
-        .essay-media-progress-fill {
-            height: 100%;
-            background: #000;
-            width: 0%;
-        }
-
         #top ul {
             padding: 15px 15px 15px 60px;
             width: 100%;
@@ -579,11 +517,6 @@
             padding: 0 15px;
             margin-top: 2em;
             margin-bottom: 1em;
-        }
-
-        #top h2.tight {
-            margin-top: 2em;
-            margin-bottom: 0.25em;
         }
 
 
@@ -737,7 +670,7 @@
             background: #ffffff;
             border: 1px solid #000;
             z-index: 500;
-            width: 480px;
+            width: 360px;
             min-width: 120px;
             min-height: 60px;
             resize: both;
@@ -767,9 +700,9 @@
             line-height: 1.4;
         }
 
-        #grain-modal-1 { top: 8vh;  left: 5%; }
-        #grain-modal-2 { top: 55vh; left: calc(50% - 240px); }
-        #grain-modal-3 { top: 8vh;  right: 5%; }
+        #grain-modal-1 { top: 8vh;  left: calc(50% - 180px); }
+        #grain-modal-2 { top: 38vh; left: calc(50% - 180px); }
+        #grain-modal-3 { top: 68vh; left: calc(50% - 180px); }
 
 
         /* ── Notes index ── */
@@ -874,6 +807,20 @@
             100% { transform: scale(0) rotate(90deg);  opacity: 0; color: var(--glitter-color); }
         }
 
+        @keyframes slideInModal {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(0); }
+        }
+
+        @keyframes slideOutModal {
+            from { transform: translateX(0); }
+            to   { transform: translateX(100%); }
+        }
+
+        /* ── Mobile notice ── */
+        #mobile-notice {
+            display: none;
+        }
 
         /* ── Mobile nav (hidden on desktop) ── */
         #mobile-nav,
@@ -981,9 +928,8 @@
 
             .mobile-nav-year {
                 font-size: 10px;
-                line-height: 1;
                 opacity: 0.5;
-                vertical-align: baseline;
+                vertical-align: middle;
                 font-family: 'HAL Timezone Mono', monospace;
             }
 
@@ -1141,12 +1087,11 @@
     <!-- ===================== MOBILE NAV ===================== -->
     <div id="mobile-nav">
         <div class="mobile-nav-item" data-essay="mediumsized">Mediumsized <span class="mobile-nav-year">2026</span></div>
-        <div class="mobile-nav-item" data-essay="emporium">Emporium or, the Useless Supplement <span class="mobile-nav-year">2026</span></div>
-        <div class="mobile-nav-item" data-essay="somethings">some things that I sort of recommend or just need to talk about <span class="mobile-nav-year">2025</span></div>
+        <div class="mobile-nav-item" data-essay="emporium">Emporium or, the Useless Supplement <span class="mobile-nav-year">2025</span></div>
         <div class="mobile-nav-item" data-essay="moon">Stop! Look at the Moon <span class="mobile-nav-year">2024</span></div>
         <div class="mobile-nav-item" data-essay="errantry">Errantry <span class="mobile-nav-year">2023</span></div>
         <div class="mobile-nav-item" data-essay="grain">The Word For World is a Grain of Sand <span class="mobile-nav-year">2023</span></div>
-        <div class="mobile-nav-item" data-essay="sand">Sand was never meant to think<span class="mobile-nav-year">2022</span></div>
+        <div class="mobile-nav-item" data-essay="sand">Sand was never meant to think <span class="mobile-nav-year">2022</span></div>
         <div class="mobile-nav-item" data-action="notes">Notes</div>
         <div class="mobile-nav-item" data-action="info">Info</div>
     </div>
@@ -1166,16 +1111,11 @@
 
 
                 <div class="sidebar-panel" id="panel-info">
-                    <i>Codex</i><br><br>
+                    <i>Emporium, or: The Useless Supplement</i><br><br>
                     Click around to explore and materials will reveal themselves.
                 </div>
 
-                <div class="sidebar-panel" id="panel-supersaturation">
-                    Perhaps Oversaturation is no longer the right word. I started looking into it and <i>Supersaturation</i> seems better suited ("supersaturation occurs with a solution when the concentration of a solute exceeds the concentration specified by the value of solubility at equilibrium" – i.e. somehow it can take more than it should, for some time)
-                </div>
-
                 <div class="sidebar-panel" id="panel-holestory">
-                
                 GÞ    Hey BB, what was that story about the holes?
                 <br><br>GÞ    I don't remember any of the details, you are so good at them.
                 <br><br>BB    I don't remember all the details but what I do remember is that they changed the source of the hot water for the first time.
@@ -1216,7 +1156,7 @@
                 </div>
 
                 <div class="sidebar-panel" id="panel-mediumsized-colophon">
-                    Released in <span class="image-trigger" data-image="trophylogic"><i>Trophy Logic</i></span> as part of a writing seminar in <i>Critical Studies</i> in Sandberg Instituut in Amsterdam in the Netherlands in May 2026.<br>
+                    Released in <i>Trophy Logic</i> as part of a writing seminar in <i>Critical Studies</i> in Sandberg Instituut in Amsterdam in the Netherlands in May 2026.<br>
                     <br><br>
                     Thank you to Rouzbeh Shadpey for the editorial advice.
                     
@@ -1257,7 +1197,7 @@
                 </div>
 
                 <div class="sidebar-panel" id="panel-errantry-colophon">
-                    <span class="image-trigger" data-image="errantry_1">Errantry.</span><br>
+                    Errantry.<br>
                     Written and designed by<br>Greta Þorkelsdóttir.<br><br>
                     Published by<br>
                     EKA GD MA.<br><br>Printed in<br>Tallinn, Estonia<br>in 
@@ -1381,18 +1321,14 @@
         <div class="sidebar-right open" id="sidebarRight">
             <div class="sidebar-content">
                 <nav class="right-menu">
-                    <div class="right-menu-item" data-essay="mediumsized"><span class="menu-title">Mediumsized</span><span class="menu-year">2026</span></div>
-                    <div class="right-menu-item" data-essay="emporium"><span class="menu-title">Emporium or, the Useless Supplement</span><span class="menu-year">2026</span></div>
-                    <div class="right-menu-item" data-essay="somethings"><span class="menu-title">some things that I sort of recommend or just need to talk about</span><span class="menu-year">2025</span></div>
-                    <div class="right-menu-item" data-essay="moon"><span class="menu-title">Stop! Look at the Moon</span><span class="menu-year">2024</span></div>
-                    <div class="right-menu-item" data-essay="errantry"><span class="menu-title">Errantry</span><span class="menu-year">2023</span></div>
-                    <div class="right-menu-item" data-essay="grain"><span class="menu-title">The Word For World is a Grain of Sand</span><span class="menu-year">2023</span></div>
-                    <div class="right-menu-item" data-essay="sand"><span class="menu-title">Sand was never meant to think</span><span class="menu-year">2022</span></div>
+                    <div class="right-menu-item" data-essay="mediumsized">Mediumsized <span class="menu-year">2026</span></div>
+                    <div class="right-menu-item" data-essay="emporium">Emporium or, the Useless Supplement <span class="menu-year">2025</span></div>
+                    <div class="right-menu-item" data-essay="moon">Stop! Look at the Moon <span class="menu-year">2024</span></div>
+                    <div class="right-menu-item" data-essay="errantry">Errantry <span class="menu-year">2023</span></div>
+                    <div class="right-menu-item" data-essay="grain">The Word For World is a Grain of Sand <span class="menu-year">2023</span></div>
+                    <div class="right-menu-item" data-essay="sand">Sand was never meant to think <span class="menu-year">2022</span></div>
                     <div class="right-menu-item" data-action="notes">Notes</div>
-                    <div class="right-menu-bottom">
-                        <div class="right-menu-item" data-action="info">Info</div>
-                        <div class="right-menu-item" data-action="refresh">Refresh</div>
-                    </div>
+                    <div class="right-menu-item" data-action="info">Info</div>
                 </nav>
             </div>
         </div>
@@ -1474,7 +1410,6 @@
             'butthedoor':    { src: 'video/butthedoor.mp4',    label: 'But the door, the door, it won\'t shut!' }
         };
         const imageModalOverlay = document.getElementById('imageModalOverlay');
-        const imageModal        = imageModalOverlay.querySelector('.image-modal');
         const gameModalOverlay  = document.getElementById('gameModalOverlay');
         const gameModalContent  = document.getElementById('gameModalContent');
         const enlargedImage = document.getElementById('enlargedImage');
@@ -1488,18 +1423,6 @@
 
         // Image data
         const imageData = {
-            'bigsmallmoreless': {
-                src: 'img/bigsmallmoreless.jpg',
-                alt: 'big small more less'
-            },
-            'trophylogic': {
-                src: 'img/trophylogic.jpg',
-                alt: 'Trophy Logic'
-            },
-            'errantry_1': {
-                src: 'img/errantry_1.png',
-                alt: 'Errantry'
-            },
             'image-meme': {
                 src: 'img/sand.webp',
                 alt: 'A meme that says: Stop programming computers. Sand was never meant to think. That is very cruel to rocks.',
@@ -1568,58 +1491,6 @@
 
                     <p><a class="sidebar-link" data-panel="panel-mediumsized-colophon">Colophon</a></p>
 
-                `
-            },
-            'somethings': {
-                title: 'some things that I sort of recommend or just need to talk about',
-                content: `
-                    <div class="essay-title">some things that I sort of recommend or just need to talk about</div>
-
-                    <p><small>Published in <a href="https://bigtimechoices.eka-gd-ma.ee/" ><i>Big Time Choices</i></a>, a temporary publishing platform created by EKA GD MA students, in May 2025.</small></p>
-
-                    <h2 class="tight">DEEP LOOKING</h2>
-
-                    <p>OK – I know – everybody is obsessed with the Deep Listening, but I have this thing that is kind of similar but about looking. It's like an exercise and one day I might write instructions or a guide. For now though, it is best to try it by letting a fleeting thing catch your attention, and let it unfold in front of you, as if in a daydream, and describe what happens. Sitting with sight.</p>
-
-                    <h2 class="tight">GETTING A DAY TIME SUMMER JOB</h2>
-
-                    <p>I am obsessed with things, in the most menial way – show me an object and I will probably love it (but not anthropomorphize, no, it is not THAT). Which is why I got a job sorting out clothes and STUFF for the Red Cross second hand stores in Reykjavík, to see if my thing love will withstand the pure WEIGHT of all of the THINGS flowing from containers. Maybe I can write about it. In the hallway by the break room, I noticed stacks of big boxes of dark chocolate digestive biscuits, and I'm already planning how many biscuits I could eat in a day.</p>
-
-                    <p>But I'm dancing around the main topic – the biggest reason I got a daytime job is that the yearly summer thing I have been doing since 2018 is now over, and I might be having an existential crisis. I used to be a designer for a festival and we called it quits last year – amicably, favorably, all were relieved. I suffered many burnouts and potential ulcers, but as painful as it was, it was also ALIVE and playful and in a small place with a small amount of people, building something on the brink of elation or collapse, or sometimes just mediocrity. Ever since I figured out what design was (I want to say circa 2012?), this festival was my dream to work on, and then I got my dream job, and then it needed to end. I am not completely sure who I am outside of that, so here's to finding out, from 8–16 on weekdays for three months.</p>
-
-                    <h2 class="tight">GETTING A WEEKEND SUMMER JOB</h2>
-
-                    <p>I decided to stop being full-time freelance (or actually, my freelance jobs didn't pay enough for a few months) and now I work at a cup store selling cups – it's a perfect place – my mind rests. The other day I was working, and no one had come in the store for about half an hour, so I started to write in my journal which I rarely do. All I could write about was that I played a song by a Danish artist and a Danish couple walked in (er I dansker?? spurje eg) and then as I played a French song a French couple walked in. This might be the only place where I'm content talking to tourists.</p>
-
-                    <h2 class="tight">THINKING ABOUT HOW THEY INTERACT</h2>
-
-                    <p>Sorting old stuff people throw out vs. selling new fancy cups … oh they juuuuxtaposeeee.</p>
-
-                    <h2 class="tight">LOSING THINGS</h2>
-
-                    <p>A few months ago, some bandits broke into my shared studio. They stole various things, some of no value, and others very expensive, but they also took two things that are very important to me:</p>
-
-                    <p>Important Object 1: A softcover edition from the 70s of The Lives of a Cell by Lewis Thomas. The book was so worn out, I taped the first ~70 pages together at the spine. Inside, I placed a special bookmark I bought in a catholic shop in Mexico City. The bandits left the bookmark, which I'm happy about, but I would really really really love to get my book back.</p>
-
-                    <p>Important Object 2: My pencil case. Small, black suede, with a blue paint stain, filled with the exact tools I've collected that suit me perfectly, for drawing, for making, for emergencies. An electric eraser with two widths, the perfect mechanical pencil, one safety pin. A little note, extra hair tie. Bandaid.</p>
-
-                    <p>Bonus Unimportant Object (Not numbered): Apple Cinema 24'' monitor from 2004, it was awful and made my eyes hurt and took up way too much space.</p>
-
-                    <p>They also stole paint, sketchbooks, tattoo equipment and materials for linocuts. Jackpot! The reach of their long fingers is incredible. I hope they're tattooing each other and making prints. I hope they will return the other important objects.</p>
-
-                    <h2 class="tight"><span class="image-trigger" data-image="bigsmallmoreless">THIS JOKE I SAW ON REELS</span></h2>
-
-                    <h2 class="tight">NEVER UPDATING MY COMPUTER AND WORRY IF I HAVE BECOME STALE</h2>
-
-                    <p>I use pirated adobe software, and I have never researched whether it's ok to update my computer. Will the programmes work? I don't know, but better to not find out. It's also great because then I don't have any of the fancy new functionalities, except for the obsolete ones: photoshop 3D still works and I have pantone colors in indesign. But … maybe .. I need them … to be a better, more clever designer? Have I stagnated? Maybe I should just –</p>
-
-                    <h2 class="tight">NOT REALLY HAVE ANY THOUGHTS</h2>
-
-                    <p>I started thinking of how the act of designing died when I started thinking about it. I love making things and I don't love thinking about them, and I feel that everything I've made with too much intention has fallen flat, dead, grey, boring, beaten horse (I guess this might be why I feel so terrible at branding). But anyway – I stopped thinking about design, and instead tried to let it happen as it happens. Right now I am sewing drawstring bags for an exhibition, making signage for a gallery, exporting a catalogue, not without thought but mostly without planned intent. Operate on an educated guess, or informed gut feeling.</p>
-
-                    <h2 class="tight">MOVE AWAY TO DO ANOTHER MASTERS DEGREE</h2>
-
-                    <p>Does anyone have leads for a flat in Amsterdam or Utrecht?</p>
                 `
             },
             'emporium': {
@@ -1751,7 +1622,7 @@
                         In both of these cameras, an absence of purpose prompted the photographer to capture the largest visible entities in existence on Earth – namely the sky and the ocean. In photographing that which is the largest, it is made the smallest, for the sensation of Sublime and the Oversaturated is non-transferrable, a solitary event. In trying to capture infinity, a smallness appears; the absolute miniature of the snapshot. And it is not even just one shot of the eternal, but over a hundred, making the eternal question even smaller, more quotidian. 
                     </p>
                     <p>
-                        The more there is added to it, the smaller it gets → repetition cancels out the awe or punch of the Sublime or Oversaturation – ideas that seem many-layered or too much, but in their complexity they flatten out; Repetition might therefore be the rightful antithesis to <a class="sidebar-link" data-panel="panel-supersaturation">Oversaturation</a> (<i>this does not apply to the Sublime, as repetition would only increase its scale ad infinitum</i>), which could, at some point, become simplicity (if you’re lucky).
+                        The more there is added to it, the smaller it gets → repetition cancels out the awe or punch of the Sublime or Oversaturation – ideas that seem many-layered or too much, but in their complexity they flatten out; Repetition might therefore be the rightful antithesis to Oversaturation (<i>this does not apply to the Sublime, as repetition would only increase its scale ad infinitum</i>), which could, at some point, become simplicity (if you’re lucky).
                     </p>
                 `
             },
@@ -1899,56 +1770,57 @@
             'grain': {
                 title: 'The Word for World is a Grain of Sand',
                 footnotesContent: `
-                    <div class="column" id="1">1&emsp;Lorine Niedecker, "Lake Superior," in <i>North Central</i> (London: Fulcrum Press, 1968).</div>
-                    <div class="column" id="2">2&emsp;Joan Didion, "Why I Write," <i>New York Times</i>, 5. December, 1976.</div>
-                    <div class="column" id="3">3&emsp;Ibid.</div>
-                    <div class="column" id="4">4&emsp;Max Stocklosa, <i>Rocks According to their Size</i> (Berlin: AKV Berlin, 2016), 9.</div>
-                    <div class="column" id="5">5&emsp;Italo Calvino, "A Sign in Space," in <i>The Complete Cosmicomics</i>, trans. William Weaver (London: Penguin Modern Classics, 2010), 33.</div>
-                    <div class="column" id="6">6&emsp;Michel Foucault, "The Subject and Power," in <i>Power: Essential Works 1954–84</i>, ed. James D. Faubion (London: Penguin Classics, 2020), 341.</div>
-                    <div class="column" id="7">7&emsp;Andrew Garnar, "Power, Action; Signs: Between Peirce and Foucault," <i>Transactions of the Charles Peirce Society</i> 42, no. 3 (2006): 357.</div>
-                    <div class="column" id="8">8&emsp;Foucault, "The Subject and Power," 341.</div>
-                    <div class="column" id="9">9&emsp;Michel Foucault, "Truth and Power," in <i>Power: Essential Works 1954–84</i>, ed. James D. Faubion (London: Penguin Classics, 2020), 133.</div>
-                    <div class="column" id="10">10&emsp;Jean Baudrillard, <i>The System of Objects</i>, transl. James Benedict (London: Verso, 1996), 42.</div>
-                    <div class="column" id="11">11&emsp;Meg Miller, "There is a Logic to this Leakage," introduction to <i>An Incomplete History of Pierced Vessels</i> by Coral Saucedo Lomelí (Los Angeles: Automatic Editions, 2022), 9.</div>
-                    <div class="column" id="12">12&emsp;Susan Stewart, <i>On Longing: Narratives of the Miniature, the Gigantic, the Souvenir, the Collection</i> (London: Duke University Press, 1993), 5.</div>
-                    <div class="column" id="13">13&emsp;Beatrice Warde, "The Crystal Goblet or Printing Should Be Invisible," in <i>The Crystal Goblet: Sixteen Essays on Typography</i>, ed. Henry Jacob (London: Sylvan Press, 1955), 12.</div>
-                    <div class="column" id="14">14&emsp;Beatriz Colomina, <i>X-Ray Architecture</i> (Zürich: Lars Müller Publishers, 2019), 116.</div>
-                    <div class="column" id="15">15&emsp;Ibid., 22.</div>
-                    <div class="column" id="16">16&emsp;Anne Carson, "Essay on Dirt," in <i>Men in the Off Hours</i> (New York City: Vintage Books, 2001), 144.</div>
-                    <div class="column" id="17">17&emsp;Baudrillard, <i>The System of Objects</i>, 42.</div>
-                    <div class="column" id="18">18&emsp;Warde, "The Crystal Goblet," 11.</div>
-                    <div class="column" id="19">19&emsp;Dan Graham, "Essay on Video, Architecture and Television," in <i>Two-Way Mirror Power: Selected Writings by Dan Graham on His Art</i>, ed. Alexander Alberro (Cambridge: The MIT Press, 1999), 59.</div>
-                    <div class="column" id="20">20&emsp;Ibid., 58.</div>
-                    <div class="column" id="21">21&emsp;Lawrence L. Garbar, Jr. and Eva M. Hyatt, "Color as a Tool for Visual Persuasion," in <i>Persuasive Imagery: A Consumer Response Perspective</i>, ed. Linda M. Scott (Mahwah: Lawrence Erlbaum Associates, 2003), 313.</div>
-                    <div class="column" id="22">22&emsp;"New Ivory Dishwashing Liquid is Clearly Better," <i>Deseret News</i>, 5. November, 1991.</div>
-                    <div class="column" id="23">23&emsp;Karen Springen, "Clear, and Cashing In," <i>Newsweek</i>, 14. February, 1993.</div>
-                    <div class="column" id="24">24&emsp;Stephen Denny, "Mutually Assured (Brand) Destruction: Tab Clear Versus Crystal Pepsi," in <i>Killing Giants: 10 Strategies to Topple the Goliath in Your Industry</i> (New York City: Portfolio/Penguin, 2011), 87.</div>
-                    <div class="column" id="25">25&emsp;Sam @ L E, "Crystal Pepsi 1993 ad," Youtube, 7. January 2022.</div>
-                    <div class="column" id="26">26&emsp;VCRchivist, "Crystal Pepsi Launch ad," Youtube, 3. August, 2009.</div>
-                    <div class="column" id="27">27&emsp;Denny, "Mutually Assured (Brand) Destruction," 87.</div>
-                    <div class="column" id="28">28&emsp;Ursula K. Le Guin, <i>The Left Hand of Darkness</i> (New York City: Ace Books, 1969), chap. 16, epub.</div>
-                    <div class="column" id="29">29&emsp;David Batchelor, <i>Chromophobia</i> (London: Reaktion Books, 2000), 10–11.</div>
-                    <div class="column" id="30">30&emsp;Michael Ende, <i>The NeverEnding Story</i>, transl. Ralph Manheim (New York City: Puffin Books, 1997).</div>
-                    <div class="column" id="31">31&emsp;Batchelor, <i>Chromophobia</i>, 21–22.</div>
-                    <div class="column" id="32">32&emsp;Byung-Chul Han, <i>The Transparency Society</i>, transl. Erik Butler (Stanford: Stanford Briefs, 2015), vii–viii.</div>
-                    <div class="column" id="33">33&emsp;Ibid., 39.</div>
-                    <div class="column" id="34">34&emsp;Amelia Groom, <i>Beverly Buchanan: Marsh Ruins</i> (London: Afterall Books, 2020), 14.</div>
-                    <div class="column" id="35">35&emsp;Ibid., 50–51.</div>
-                    <div class="column" id="36">36&emsp;Ibid., 79.</div>
-                    <div class="column" id="37">37&emsp;Édouard Glissant, "For Opacity," in <i>Poetics of Relation</i>, trans. Betsy Wing (Ann Arbor: The University of Michigan Press, 2010), 190.</div>
-                    <div class="column" id="38">38&emsp;Groom, <i>Beverly Buchanan: Marsh Ruins</i>, 76.</div>
-                    <div class="column" id="39">39&emsp;Jean Baudrillard, <i>The Ecstasy of Communication</i>, transl. Bernard Schütze and Caroline Schütze (Los Angeles: Semiotext(e), 2012), 35.</div>
-                    <div class="column" id="40">40&emsp;Han, <i>The Transparency Society</i>, 15.</div>
-                    <div class="column" id="41">41&emsp;Ursula K. Le Guin, "Why Are Americans Afraid of Dragons," in <i>The Language of The Night: Essays on Fantasy and Science Fiction</i>, ed. Susan Wood (New York: Perigree Books, 1980), 40.</div>
-                    <div class="column" id="42">42&emsp;Ibid., 41.</div>
-                    <div class="column" id="43">43&emsp;Ibid., 44.</div>
-                    <div class="column" id="44">44&emsp;Ursula K. Le Guin, "Collectors, Rhymesters and Drummers," in <i>The Wave in the Mind: Talks and Essays on the Writer, the Reader, and the Imagination</i> (Boston: Shambhala, 2012), 147.</div>
-                    <div class="column" id="45">45&emsp;Ibid., 150.</div>
-                    <div class="column" id="46">46&emsp;Byung-Chul Han, <i>Saving Beauty</i>, transl. Daniel Steuer (Cambridge: Polity Books, 2018), 78.</div>
-                    <div class="column" id="47">47&emsp;Ibid.</div>
-                    <div class="column" id="48">48&emsp;Han, <i>The Transparency Society</i>, 21.</div>
-                    <div class="column" id="49">49&emsp;Carl G. Jung, "Approaching the Unconscious," in <i>Man and His Symbols</i>, ed. Carl G. Jung (New York City: Dell Publishing, 1968), 5.</div>
-                    <div class="column" id="50">50&emsp;Han, <i>Saving Beauty</i>, 79.</div>
+                    <div class="column" id="1">1&emsp;tinyobscurae, Twitter Post, 17. October 2022, 11:51.</div>
+                    <div class="column" id="2">2&emsp;Lorine Niedecker, "Lake Superior," in <i>North Central</i> (London: Fulcrum Press, 1968).</div>
+                    <div class="column" id="3">3&emsp;Joan Didion, "Why I Write," <i>New York Times</i>, 5. December, 1976.</div>
+                    <div class="column" id="4">4&emsp;Ibid.</div>
+                    <div class="column" id="5">5&emsp;Max Stocklosa, <i>Rocks According to their Size</i> (Berlin: AKV Berlin, 2016), 9.</div>
+                    <div class="column" id="6">6&emsp;Italo Calvino, "A Sign in Space," in <i>The Complete Cosmicomics</i>, trans. William Weaver (London: Penguin Modern Classics, 2010), 33.</div>
+                    <div class="column" id="7">7&emsp;Michel Foucault, "The Subject and Power," in <i>Power: Essential Works 1954–84</i>, ed. James D. Faubion (London: Penguin Classics, 2020), 341.</div>
+                    <div class="column" id="8">8&emsp;Andrew Garnar, "Power, Action; Signs: Between Peirce and Foucault," <i>Transactions of the Charles Peirce Society</i> 42, no. 3 (2006): 357.</div>
+                    <div class="column" id="9">9&emsp;Foucault, "The Subject and Power," 341.</div>
+                    <div class="column" id="10">10&emsp;Michel Foucault, "Truth and Power," in <i>Power: Essential Works 1954–84</i>, ed. James D. Faubion (London: Penguin Classics, 2020), 133.</div>
+                    <div class="column" id="11">11&emsp;Jean Baudrillard, <i>The System of Objects</i>, transl. James Benedict (London: Verso, 1996), 42.</div>
+                    <div class="column" id="12">12&emsp;Meg Miller, "There is a Logic to this Leakage," introduction to <i>An Incomplete History of Pierced Vessels</i> by Coral Saucedo Lomelí (Los Angeles: Automatic Editions, 2022), 9.</div>
+                    <div class="column" id="13">13&emsp;Susan Stewart, <i>On Longing: Narratives of the Miniature, the Gigantic, the Souvenir, the Collection</i> (London: Duke University Press, 1993), 5.</div>
+                    <div class="column" id="14">14&emsp;Beatrice Warde, "The Crystal Goblet or Printing Should Be Invisible," in <i>The Crystal Goblet: Sixteen Essays on Typography</i>, ed. Henry Jacob (London: Sylvan Press, 1955), 12.</div>
+                    <div class="column" id="15">15&emsp;Beatriz Colomina, <i>X-Ray Architecture</i> (Zürich: Lars Müller Publishers, 2019), 116.</div>
+                    <div class="column" id="16">16&emsp;Ibid., 22.</div>
+                    <div class="column" id="17">17&emsp;Anne Carson, "Essay on Dirt," in <i>Men in the Off Hours</i> (New York City: Vintage Books, 2001), 144.</div>
+                    <div class="column" id="18">18&emsp;Baudrillard, <i>The System of Objects</i>, 42.</div>
+                    <div class="column" id="19">19&emsp;Warde, "The Crystal Goblet," 11.</div>
+                    <div class="column" id="20">20&emsp;Dan Graham, "Essay on Video, Architecture and Television," in <i>Two-Way Mirror Power: Selected Writings by Dan Graham on His Art</i>, ed. Alexander Alberro (Cambridge: The MIT Press, 1999), 59.</div>
+                    <div class="column" id="21">21&emsp;Ibid., 58.</div>
+                    <div class="column" id="22">22&emsp;Lawrence L. Garbar, Jr. and Eva M. Hyatt, "Color as a Tool for Visual Persuasion," in <i>Persuasive Imagery: A Consumer Response Perspective</i>, ed. Linda M. Scott (Mahwah: Lawrence Erlbaum Associates, 2003), 313.</div>
+                    <div class="column" id="23">23&emsp;"New Ivory Dishwashing Liquid is Clearly Better," <i>Deseret News</i>, 5. November, 1991.</div>
+                    <div class="column" id="24">24&emsp;Karen Springen, "Clear, and Cashing In," <i>Newsweek</i>, 14. February, 1993.</div>
+                    <div class="column" id="25">25&emsp;Stephen Denny, "Mutually Assured (Brand) Destruction: Tab Clear Versus Crystal Pepsi," in <i>Killing Giants: 10 Strategies to Topple the Goliath in Your Industry</i> (New York City: Portfolio/Penguin, 2011), 87.</div>
+                    <div class="column" id="26">26&emsp;Sam @ L E, "Crystal Pepsi 1993 ad," Youtube, 7. January 2022.</div>
+                    <div class="column" id="27">27&emsp;VCRchivist, "Crystal Pepsi Launch ad," Youtube, 3. August, 2009.</div>
+                    <div class="column" id="28">28&emsp;Denny, "Mutually Assured (Brand) Destruction," 87.</div>
+                    <div class="column" id="29">29&emsp;Ursula K. Le Guin, <i>The Left Hand of Darkness</i> (New York City: Ace Books, 1969), chap. 16, epub.</div>
+                    <div class="column" id="30">30&emsp;David Batchelor, <i>Chromophobia</i> (London: Reaktion Books, 2000), 10–11.</div>
+                    <div class="column" id="31">31&emsp;Michael Ende, <i>The NeverEnding Story</i>, transl. Ralph Manheim (New York City: Puffin Books, 1997).</div>
+                    <div class="column" id="32">32&emsp;Batchelor, <i>Chromophobia</i>, 21–22.</div>
+                    <div class="column" id="33">33&emsp;Byung-Chul Han, <i>The Transparency Society</i>, transl. Erik Butler (Stanford: Stanford Briefs, 2015), vii–viii.</div>
+                    <div class="column" id="34">34&emsp;Ibid., 39.</div>
+                    <div class="column" id="35">35&emsp;Amelia Groom, <i>Beverly Buchanan: Marsh Ruins</i> (London: Afterall Books, 2020), 14.</div>
+                    <div class="column" id="36">36&emsp;Ibid., 50–51.</div>
+                    <div class="column" id="37">37&emsp;Ibid., 79.</div>
+                    <div class="column" id="38">38&emsp;Édouard Glissant, "For Opacity," in <i>Poetics of Relation</i>, trans. Betsy Wing (Ann Arbor: The University of Michigan Press, 2010), 190.</div>
+                    <div class="column" id="39">39&emsp;Groom, <i>Beverly Buchanan: Marsh Ruins</i>, 76.</div>
+                    <div class="column" id="40">40&emsp;Jean Baudrillard, <i>The Ecstasy of Communication</i>, transl. Bernard Schütze and Caroline Schütze (Los Angeles: Semiotext(e), 2012), 35.</div>
+                    <div class="column" id="41">41&emsp;Han, <i>The Transparency Society</i>, 15.</div>
+                    <div class="column" id="42">42&emsp;Ursula K. Le Guin, "Why Are Americans Afraid of Dragons," in <i>The Language of The Night: Essays on Fantasy and Science Fiction</i>, ed. Susan Wood (New York: Perigree Books, 1980), 40.</div>
+                    <div class="column" id="43">43&emsp;Ibid., 41.</div>
+                    <div class="column" id="44">44&emsp;Ibid., 44.</div>
+                    <div class="column" id="45">45&emsp;Ursula K. Le Guin, "Collectors, Rhymesters and Drummers," in <i>The Wave in the Mind: Talks and Essays on the Writer, the Reader, and the Imagination</i> (Boston: Shambhala, 2012), 147.</div>
+                    <div class="column" id="46">46&emsp;Ibid., 150.</div>
+                    <div class="column" id="47">47&emsp;Byung-Chul Han, <i>Saving Beauty</i>, transl. Daniel Steuer (Cambridge: Polity Books, 2018), 78.</div>
+                    <div class="column" id="48">48&emsp;Ibid.</div>
+                    <div class="column" id="49">49&emsp;Han, <i>The Transparency Society</i>, 21.</div>
+                    <div class="column" id="50">50&emsp;Carl G. Jung, "Approaching the Unconscious," in <i>Man and His Symbols</i>, ed. Carl G. Jung (New York City: Dell Publishing, 1968), 5.</div>
+                    <div class="column" id="51">51&emsp;Han, <i>Saving Beauty</i>, 79.</div>
                 `,
                 bibliographyContent: `
                     <p>Awazuhara, Ayami. <i>A Heart of a Stone</i>. Berlin: Bom Dia Boa Tarde Boa Noite, 2014.</p>
@@ -2040,26 +1912,26 @@
 
                     <blockquote>
                         In every part of every living thing<br>
-                        is stuff that once was rock.<sup><a href="#1">1</a></sup>
+                        is stuff that once was rock.<sup><a href="#2">2</a></sup>
                     </blockquote>
 
                     <p>There is an object, an image, a thing which, to me, shimmers, in the same way Joan Didion wrote about shimmer in her essay "Why I Write:"</p>
 
                     <blockquote>
-                        People on hallucinogens describe the same perception of objects. [...] [I do not] take hallucinogens, but certain images do shimmer for me. Look hard enough, and you can't miss the shimmer.<sup><a href="#2">2</a></sup>
+                        People on hallucinogens describe the same perception of objects. [...] [I do not] take hallucinogens, but certain images do shimmer for me. Look hard enough, and you can't miss the shimmer.<sup><a href="#3">3</a></sup>
                     </blockquote>
 
-                    <p>Didion describes the act of writing as a way of figuring out what she is looking at, what it means, why the oil refineries around Carquinez Straits (a part of a river that runs through Northern California, USA) appeared in a sinister light to her in the summer of 1956, and how these specific pictures in her mind had a shimmer around the edges.<sup><a href="#3">3</a></sup> This intriguing quality was the potential glimmer of a story.</p>
+                    <p>Didion describes the act of writing as a way of figuring out what she is looking at, what it means, why the oil refineries around Carquinez Straits (a part of a river that runs through Northern California, USA) appeared in a sinister light to her in the summer of 1956, and how these specific pictures in her mind had a shimmer around the edges.<sup><a href="#4">4</a></sup> This intriguing quality was the potential glimmer of a story.</p>
 
                     <p>This thing, which has this certain quality that I cannot stop thinking about, keeps coming back to me, it asks of me to investigate it and I cannot deny it the exploration. It is not a precious stone, nor a piece of glass, it is a fluid of low viscosity which has me shrinking myself to a miniature, so that I can jump from the rim, fall down the bottleneck, to slosh and swim around in the sparkling cola river that is Crystal Pepsi. It is not a crystal, it is a beverage and it comes in a plastic bottle.</p>
 
-                    <p>It is a fall into meaning, or as German author and designer Max Stocklosa wrote: "[it is a portal] into the interior of objects, the interior of worlds. A shortcut on the transformation path from matter into words. A backdoor that leads to the backend of both things, while they are still in the making."<sup><a href="#4">4</a></sup> It is an inability to keep things in surface focus, stuck inside the feedback loop inside a sign, watching the molecules of the signified and their signifiers in a constant revolving dance of changing meanings.</p>
+                    <p>It is a fall into meaning, or as German author and designer Max Stocklosa wrote: "[it is a portal] into the interior of objects, the interior of worlds. A shortcut on the transformation path from matter into words. A backdoor that leads to the backend of both things, while they are still in the making."<sup><a href="#5">5</a></sup> It is an inability to keep things in surface focus, stuck inside the feedback loop inside a sign, watching the molecules of the signified and their signifiers in a constant revolving dance of changing meanings.</p>
 
                     <p>The word Crystal makes the ill-fated soft drink, sold only between 1992 and 1994, sound as if it is a pure, precious stone. Yes, glass and crystal glass are the same thing, with the exception of one key ingredient, and glass is not a crystal – it is an amorphous solid. It lacks the orderly crystalline structure of precious stones. Glass is made with sand and soda-lime or iron. Crystal is made with sand and lead oxide. Both are a type of glass; but crystal boasts incredible clarity and glass is generally thicker, sturdier, foggy, green or blue. However, glass and crystal are made from melted sand, which is made from stones, which are rocks, and there is nothing more opaque than a rock. More on that later.</p>
 
                     <h3>Some thoughts on signs</h3>
 
-                    <p>In Italo Calvino's short story "A Sign in Space," the character and cosmic know-all Qfwfq wants to calculate how long it takes the galaxy to revolve around itself, so he attempts to mark a spot to know exactly when he has gone one round. But in that, a problem presented itself: What is a sign if there is nothing to compare it to? Even to think something was impossible, as thinking is a result of things being there to think about. As Qfwfq made the sign, he also made thought.<sup><a href="#5">5</a></sup> To have signs is to think, to experience things and compare them. A sign is what is immediately seen and known, compared to what is around it.</p>
+                    <p>In Italo Calvino's short story "A Sign in Space," the character and cosmic know-all Qfwfq wants to calculate how long it takes the galaxy to revolve around itself, so he attempts to mark a spot to know exactly when he has gone one round. But in that, a problem presented itself: What is a sign if there is nothing to compare it to? Even to think something was impossible, as thinking is a result of things being there to think about. As Qfwfq made the sign, he also made thought.<sup><a href="#6">6</a></sup> To have signs is to think, to experience things and compare them. A sign is what is immediately seen and known, compared to what is around it.</p>
 
                     <p>Everything is a sign for something, everything is situated in relation to something else. It is the relationship between the signs that define their meaning – which in turn is defined by who sees the sign. These relationships differ and vary enormously between where they are situated – who is the viewer, the interpreter, the audience? Between people, there is always an unknown (and there lies the beauty of communication). This uncertainty changes, mutates, creates meanings.</p>
 
@@ -2069,49 +1941,49 @@
 
                     <h3>Some thoughts on power</h3>
 
-                    <p>French philosopher Michel Foucault wrote in his essay "The Subject and Power," that power was "always a way of action upon an acting subject or acting subjects by virtue of their acting or being capable of action. A set of actions upon other actions."<sup><a href="#6">6</a></sup> Power is action, action is doing, doing is making and unmaking. In seeing that, it is possible to interpret power as not inherently positive or negative, but as a force that channels the direction of specific interpretations.<sup><a href="#7">7</a></sup> An elaboration of this is found in the term conduct, which Foucault thought a good aide to the specifics of power relations: "To 'conduct' others is at the same time to 'lead' others and a way of behaving within a more or less open field of possibilities. The exercise of power is a 'conduct of conducts' and a management of possibilities."<sup><a href="#8">8</a></sup></p>
+                    <p>French philosopher Michel Foucault wrote in his essay "The Subject and Power," that power was "always a way of action upon an acting subject or acting subjects by virtue of their acting or being capable of action. A set of actions upon other actions."<sup><a href="#7">7</a></sup> Power is action, action is doing, doing is making and unmaking. In seeing that, it is possible to interpret power as not inherently positive or negative, but as a force that channels the direction of specific interpretations.<sup><a href="#8">8</a></sup> An elaboration of this is found in the term conduct, which Foucault thought a good aide to the specifics of power relations: "To 'conduct' others is at the same time to 'lead' others and a way of behaving within a more or less open field of possibilities. The exercise of power is a 'conduct of conducts' and a management of possibilities."<sup><a href="#9">9</a></sup></p>
 
                     <p>By constraining the meaning of subjects or objects, it is possible to have a shared meaning, a conversation, a habit or a set of rules to abide by. Like thought, signs and things are vague, in that they mean something but that meaning can be changed, and so the challenging of meaning is an important aspect of development or elaboration or resistance.</p>
 
                     <p>There is something to be said about truth here as well – truth is a form of power. One aspect of truth is that it is a set of signs that are generally agreed upon: truth is malleable, constantly changing and varies wildly. To quote Foucault again:</p>
 
                     <blockquote>
-                        It's not a matter of emancipating truth from every system of power (which would be a chimera, for truth is already power) but of detaching the power of truth from the forms of hegemony, social, economic, and cultural, within which it operates at the present time.<sup><a href="#9">9</a></sup>
+                        It's not a matter of emancipating truth from every system of power (which would be a chimera, for truth is already power) but of detaching the power of truth from the forms of hegemony, social, economic, and cultural, within which it operates at the present time.<sup><a href="#10">10</a></sup>
                     </blockquote>
 
                     <p>I will not attempt to write about the meaning of truth, but a meaning of truth, or at least one of its many facets; namely the Western representation of transparency as universal truth. A universal truth, as the one represented by glass, is a meaning that implodes on itself. And what I mean by implosion is that in its complete solidity, glass refuses to be a passageway as nothing travels through it except light and projections.</p>
 
-                    <p>Glass is the material of the future, in that it is a representation of modernity. The future is transparent and the present and past are opaque. Glass has no smell, nor does it transfer smell; glass is non-porous and so it does not adopt properties of what it holds, nor does it leak or transfer into its content. In its complete solidity, it is also ambiguous – it promises intimacy by being see-through, but refuses it all the same by being inaccessible. It gives an impression of communication, but you cannot hear what is being said on the other side.<sup><a href="#10">10</a></sup> Nothing seeps through. This glassy stable image of truth is the polar opposite of truth as clay, or mud or dirt – a soft morphing entity that accepts footprints and changing weather conditions, thoughts, and time.</p>
+                    <p>Glass is the material of the future, in that it is a representation of modernity. The future is transparent and the present and past are opaque. Glass has no smell, nor does it transfer smell; glass is non-porous and so it does not adopt properties of what it holds, nor does it leak or transfer into its content. In its complete solidity, it is also ambiguous – it promises intimacy by being see-through, but refuses it all the same by being inaccessible. It gives an impression of communication, but you cannot hear what is being said on the other side.<sup><a href="#11">11</a></sup> Nothing seeps through. This glassy stable image of truth is the polar opposite of truth as clay, or mud or dirt – a soft morphing entity that accepts footprints and changing weather conditions, thoughts, and time.</p>
 
-                    <p>To hold meaning is not the same as to enclose it. Holding meaning is malleable, it leaks, everchanging. Enclosing meaning implies a closed circuit, a stable constant, and transparency encloses like no other. "To pierce a vessel – to make a sieve – is to be left with a pile of holes,"<sup><a href="#11">11</a></sup> and a pierced bottle of Crystal Pepsi becomes a vessel for digging into these truths or holes – of healthiness, dirtiness, capitalism, power structures and oppression.</p>
+                    <p>To hold meaning is not the same as to enclose it. Holding meaning is malleable, it leaks, everchanging. Enclosing meaning implies a closed circuit, a stable constant, and transparency encloses like no other. "To pierce a vessel – to make a sieve – is to be left with a pile of holes,"<sup><a href="#12">12</a></sup> and a pierced bottle of Crystal Pepsi becomes a vessel for digging into these truths or holes – of healthiness, dirtiness, capitalism, power structures and oppression.</p>
 
                     <h2>II<br>Things That Cast Nearly No Shadow</h2>
 
                     <blockquote>
-                        The movement from realism to modernism to postmodernism is a movement from the sign as material to the signifying process itself. The reflexivity of the modernist use of language calls attention not to the material existence of a world lying beyond and outside language but to the world-making capacity of language, a capacity which points to the arbitrariness of the sign at the same time that it points to the world as a transient creation of language.<sup><a href="#12">12</a></sup>
+                        The movement from realism to modernism to postmodernism is a movement from the sign as material to the signifying process itself. The reflexivity of the modernist use of language calls attention not to the material existence of a world lying beyond and outside language but to the world-making capacity of language, a capacity which points to the arbitrariness of the sign at the same time that it points to the world as a transient creation of language.<sup><a href="#13">13</a></sup>
                     </blockquote>
 
                     <p>Do not confuse the terms 'invisible' and 'transparent.' To be invisible is to not be perceived, seen, no light is refracted as there is nothing for it to refract off. To be transparent is when light shines through the surface and illuminates what is within, with tiny glimmers reminding us that the material is there nonetheless. But please, let go of the exterior, it only gets in the way.</p>
 
-                    <p>Modernism, the Western movement in literature, art, design, and architecture, signalled a departure from the past. It was a time of developments in technology and the near-global adoption of capitalism, World War I, industrialisation – a time of massive change which called for a change of thought, of production methods, of nearly everything. The movement has many meanings, but in the context of this essay, one of the meanings was that things had been too decorated, too much meaning was ascribed to them, and so, in response, the vessel had to be rendered transparent for the real meaning to shine. "What must it do?" became a far more important sentiment than "how should it look?"<sup><a href="#13">13</a></sup> and transparency took on the form of tabula rasa.</p>
+                    <p>Modernism, the Western movement in literature, art, design, and architecture, signalled a departure from the past. It was a time of developments in technology and the near-global adoption of capitalism, World War I, industrialisation – a time of massive change which called for a change of thought, of production methods, of nearly everything. The movement has many meanings, but in the context of this essay, one of the meanings was that things had been too decorated, too much meaning was ascribed to them, and so, in response, the vessel had to be rendered transparent for the real meaning to shine. "What must it do?" became a far more important sentiment than "how should it look?"<sup><a href="#14">14</a></sup> and transparency took on the form of tabula rasa.</p>
 
                     <p>In <i>X-Ray Architecture</i>, Spanish architecture historian Beatriz Colomina wrote about how Modernist ideology and architecture was influenced by the discovery of the X-ray and its potential to reveal. This happened at the same time as tuberculosis and viruses stripped interiors bare – the dense carpets and thick curtains, which used to decorate everything from households to hospitals, could hold many hidden things – both bourgeois tales of grandeur, as well as dust mites, bacteria, viruses and secrets.</p>
 
-                    <p>The German architect Mies van der Rohe, one of the pioneers of Modernist steel-and-glass architecture, was obsessed with X-rays of bodies, using them as illustrations in his articles and referring to his work as a type of "skin and bones" architecture.<sup><a href="#14">14</a></sup> Furthermore, the French architect Le Corbusier argued that the earth was a breeding ground for illnesses, making it the enemy of man – so he drew buildings on pillars, far removed from the natural (and very dirty) ground, with the roof to be used for sunbathing, exercising, gardening.<sup><a href="#15">15</a></sup></p>
+                    <p>The German architect Mies van der Rohe, one of the pioneers of Modernist steel-and-glass architecture, was obsessed with X-rays of bodies, using them as illustrations in his articles and referring to his work as a type of "skin and bones" architecture.<sup><a href="#15">15</a></sup> Furthermore, the French architect Le Corbusier argued that the earth was a breeding ground for illnesses, making it the enemy of man – so he drew buildings on pillars, far removed from the natural (and very dirty) ground, with the roof to be used for sunbathing, exercising, gardening.<sup><a href="#16">16</a></sup></p>
 
-                    <p>This is an understandable response – of trying to restore order after wars and pandemics. There is always a villain and the villain is dirty. Dirt is matter out of place, unwelcome matter that disturbs.<sup><a href="#16">16</a></sup> And glass – glass is clean, it is pure, it is objective, which makes it the material of the future. In this vision of the future, primary bodily functions are disowned for their immoral dirtiness, and hygiene is seen as sublime.<sup><a href="#17">17</a></sup></p>
+                    <p>This is an understandable response – of trying to restore order after wars and pandemics. There is always a villain and the villain is dirty. Dirt is matter out of place, unwelcome matter that disturbs.<sup><a href="#17">17</a></sup> And glass – glass is clean, it is pure, it is objective, which makes it the material of the future. In this vision of the future, primary bodily functions are disowned for their immoral dirtiness, and hygiene is seen as sublime.<sup><a href="#18">18</a></sup></p>
 
-                    <p>In her 1932 essay "The Crystal Goblet," American writer and typographer Beatrice Warde places a golden goblet and a crystal goblet side by side, both filled with a rare vintage. Which vessel do you choose? Warde argues that you cannot appreciate the true quality of the content unless the carrier is perceptually imperceptible – otherwise you would get confused about what it is you are enjoying; is it the grandeur of the gold? Or is it the wine, a sublime fermented drink that both tastes good and is a digestive in small quantities?<sup><a href="#18">18</a></sup></p>
+                    <p>In her 1932 essay "The Crystal Goblet," American writer and typographer Beatrice Warde places a golden goblet and a crystal goblet side by side, both filled with a rare vintage. Which vessel do you choose? Warde argues that you cannot appreciate the true quality of the content unless the carrier is perceptually imperceptible – otherwise you would get confused about what it is you are enjoying; is it the grandeur of the gold? Or is it the wine, a sublime fermented drink that both tastes good and is a digestive in small quantities?<sup><a href="#19">19</a></sup></p>
 
                     <p>There is meaning in the vessel, no matter how transparent it is – seen in its natural habitat, a crystal goblet is a precious and expensive piece of handcraft, reflecting brilliantly in the warm rays of the sun. What is seen is not exactly what is. It retains only the appearance of absolute openness, while its materiality is expensive, unattainable, fragile.</p>
 
-                    <p>To deny the vessel a meaning, to pretend it is not there seems like a strange game of hide and no seek. "At the same time that glass reveals, it conceals,"<sup><a href="#19">19</a></sup> American artist Dan Graham wrote. In "Essay on Video, Architecture and Television," Graham argues that an erasure of the vessel cannot exist, for everything has meaning. He sees glass as a form of lying, a way of appearing in one way, but being in another. A bank, for example, or a government institution made of glass is transparent, but not accessible. Access is not gained in the same way from the outside as by the people who are on the inside. Light shines through, but the barrier remains solid. In addition to that – glass is reflective, mirroring the outsider's image on what is happening inside; the outsider projects an image of their own self onto whatever is on the other side, making the barrier all the more visible, and what is on the inside becomes even more desirable.<sup><a href="#20">20</a></sup></p>
+                    <p>To deny the vessel a meaning, to pretend it is not there seems like a strange game of hide and no seek. "At the same time that glass reveals, it conceals,"<sup><a href="#20">20</a></sup> American artist Dan Graham wrote. In "Essay on Video, Architecture and Television," Graham argues that an erasure of the vessel cannot exist, for everything has meaning. He sees glass as a form of lying, a way of appearing in one way, but being in another. A bank, for example, or a government institution made of glass is transparent, but not accessible. Access is not gained in the same way from the outside as by the people who are on the inside. Light shines through, but the barrier remains solid. In addition to that – glass is reflective, mirroring the outsider's image on what is happening inside; the outsider projects an image of their own self onto whatever is on the other side, making the barrier all the more visible, and what is on the inside becomes even more desirable.<sup><a href="#21">21</a></sup></p>
 
                     <p>Warde and Graham seem to exist on extreme ends of the transparency tightrope game. In one corner, Warde argues for the complete erasure of meaning from the medium, giving the message the full attention – in the other, Graham argues that such erasure cannot exist, for everything has meaning, everything is a sign for something, even transparency.</p>
 
                     <p>Warde positioned the crystal goblet as a superior alternative to the golden goblet. 60 years later, Crystal Pepsi was marketed as a healthy additive- and caffeine-free alternative to regular Pepsi.</p>
 
-                    <p>The clear craze of the late 1980s and early 90s was a result of Western capitalist marketing identifying transparency to be associated with purity, being healthy.<sup><a href="#21">21</a></sup> Clarity was needed. Companies raced to make their products transparent. An American soap company, Ivory, changed the colour of its dishwashing detergent in 1991 from its signature opaque milky white, to clear, devoid of anything but viscosity.<sup><a href="#22">22</a></sup> Yet another American company, Amoco Oil Co., had long before, in 1915, developed a method of stripping colour from gasoline, but come 1992, it was sexily renamed into Crystal Clear Amoco Ultimate and marketed as a superior fuel. As detailed in a 1993 Newsweek article, transparent products had arrived to save all people from artificial ingredients; whether it be colourants, preservatives or additives. The nearly logical thought process: if it is clear, it is better, for there is nothing to hide behind. What was actually said was: "The idea is that we drink clear water, and so the car should drink clear things, too."<sup><a href="#23">23</a></sup></p>
+                    <p>The clear craze of the late 1980s and early 90s was a result of Western capitalist marketing identifying transparency to be associated with purity, being healthy.<sup><a href="#22">22</a></sup> Clarity was needed. Companies raced to make their products transparent. An American soap company, Ivory, changed the colour of its dishwashing detergent in 1991 from its signature opaque milky white, to clear, devoid of anything but viscosity.<sup><a href="#23">23</a></sup> Yet another American company, Amoco Oil Co., had long before, in 1915, developed a method of stripping colour from gasoline, but come 1992, it was sexily renamed into Crystal Clear Amoco Ultimate and marketed as a superior fuel. As detailed in a 1993 Newsweek article, transparent products had arrived to save all people from artificial ingredients; whether it be colourants, preservatives or additives. The nearly logical thought process: if it is clear, it is better, for there is nothing to hide behind. What was actually said was: "The idea is that we drink clear water, and so the car should drink clear things, too."<sup><a href="#24">24</a></sup></p>
 
                     <p>This type of transparency is different from Warde's – mainly because it has become a selling point, a hyper-capitalist method for big companies to make their consumer goods attractive and desirable to the general public.</p>
 
@@ -2121,11 +1993,11 @@
 
                     <p>Opacity is bad, transparency is good.</p>
 
-                    <p>A lot of people were confused. First, there was already a clear soft drink on the market: Sprite. But Sprite is a lemon-lime drink, so it makes sense that it is clear, for water with a splash of citrus is also clear. Crystal Pepsi tasted like regular Pepsi, a cola-flavoured drink. The surprise one must feel, to take a sip of a water-looking sparkly substance, thinking it is lemon-lime flavoured and finding out it is a fully fledged cola! Second, as we now know, to be transparent is to be healthy, and Crystal Pepsi was not a health drink – it contained a lot of sugar.<sup><a href="#24">24</a></sup></p>
+                    <p>A lot of people were confused. First, there was already a clear soft drink on the market: Sprite. But Sprite is a lemon-lime drink, so it makes sense that it is clear, for water with a splash of citrus is also clear. Crystal Pepsi tasted like regular Pepsi, a cola-flavoured drink. The surprise one must feel, to take a sip of a water-looking sparkly substance, thinking it is lemon-lime flavoured and finding out it is a fully fledged cola! Second, as we now know, to be transparent is to be healthy, and Crystal Pepsi was not a health drink – it contained a lot of sugar.<sup><a href="#25">25</a></sup></p>
 
-                    <p>The advertising for the beverage was shimmering in its strangeness. One of the ads, a radio commercial aired in 1993, was set up like a distressed person calling into a radio programme called <i>The Unexplainable Phenomena</i>. The caller describes a mysterious glowing light. The host asks: A UFO? No, it was an open refrigerator! It contained something, clear, shimmering – A spectral protoplasm? A ghostly spirit? No! A Crystal Pepsi! Sir, what exactly is the unexplained phenomenon here? Crystal Pepsi, the wondrous refreshing beverage, it is like Pepsi but lighter! The host grows exasperated, and just as he starts hanging up the phone, the caller proclaims: I know a phenomenon when I drink one!<sup><a href="#25">25</a></sup> In interpreting the commercial, the message might be that it was in fact too unknown – so unexplainable that even a seasoned host of an esoteric radio show found it ridiculous.</p>
+                    <p>The advertising for the beverage was shimmering in its strangeness. One of the ads, a radio commercial aired in 1993, was set up like a distressed person calling into a radio programme called <i>The Unexplainable Phenomena</i>. The caller describes a mysterious glowing light. The host asks: A UFO? No, it was an open refrigerator! It contained something, clear, shimmering – A spectral protoplasm? A ghostly spirit? No! A Crystal Pepsi! Sir, what exactly is the unexplained phenomenon here? Crystal Pepsi, the wondrous refreshing beverage, it is like Pepsi but lighter! The host grows exasperated, and just as he starts hanging up the phone, the caller proclaims: I know a phenomenon when I drink one!<sup><a href="#26">26</a></sup> In interpreting the commercial, the message might be that it was in fact too unknown – so unexplainable that even a seasoned host of an esoteric radio show found it ridiculous.</p>
 
-                    <p>Right now, the future's one step ahead of you.<sup><a href="#26">26</a></sup> Crystal Pepsi was a result of crystal-gazing, of looking into the (hyper-capitalist marketing) orb and seeing what the future had in store. However, it proved to be too strange a beverage and was taken off the market in 1994, two years after its introduction.<sup><a href="#27">27</a></sup></p>
+                    <p>Right now, the future's one step ahead of you.<sup><a href="#27">27</a></sup> Crystal Pepsi was a result of crystal-gazing, of looking into the (hyper-capitalist marketing) orb and seeing what the future had in store. However, it proved to be too strange a beverage and was taken off the market in 1994, two years after its introduction.<sup><a href="#28">28</a></sup></p>
 
                     <h2>III<br>An Opposite of Nothing</h2>
 
@@ -2135,7 +2007,7 @@
                         Two are one, life and death, lying<br>
                         together like lovers in kemmer,<br>
                         like hands joined together,<br>
-                        like the end and the way.<sup><a href="#28">28</a></sup>
+                        like the end and the way.<sup><a href="#29">29</a></sup>
                     </blockquote>
 
                     <p>In the book <i>Chromophobia</i>, English artist and writer David Batchelor chronicles an eerie, uncanny visit to an Anglo-American art collectors house:</p>
@@ -2145,60 +2017,60 @@
 
                         There is a kind of white that repels everything that is inferior to it, and that is almost everything. [...] There is a kind of white that is not created by bleach, but that itself is bleach. This was that kind of white. This white was aggressively white.
 
-                        [...] Inside this great white interior, few things looked settled, and even fewer looked at home, and those that did look settled also looked like they had been prepared: approved, trained, disciplined, marshalled.<sup><a href="#29">29</a></sup>
+                        [...] Inside this great white interior, few things looked settled, and even fewer looked at home, and those that did look settled also looked like they had been prepared: approved, trained, disciplined, marshalled.<sup><a href="#30">30</a></sup>
                     </blockquote>
 
                     <p>This was that kind of white. From being something to being nothing, the materiality of what surrounds this kind of white becomes the thing it is. It is now a nothingness – not emptiness, but like the nothingness of the Nothing in German writer Michael Ende's fantasy novel, <i>The NeverEnding Story</i>.</p>
 
-                    <p><i>The NeverEnding Story</i>, or the first half of it, centres on a boy, Bastian, who steals a mysterious book from a bookseller on his way to school. He is a bookworm and a bullied child, alienated from his classmates and father. Upon arriving late, he decides to skip class and instead goes up to the attic to read the stolen book. The book is set in the magical land of Fantasia where a formless entity, The Nothing, is wreaking havoc and destroying the world. The Nothing is a metaphysical representation of the absence of all things, a symptom of a grander societal illness in human beings: people had stopped believing in fantasy, and so fantasy had ceased to exist. The only cure was to be found in a human child's imagination.<sup><a href="#30">30</a></sup> More on this later.</p>
+                    <p><i>The NeverEnding Story</i>, or the first half of it, centres on a boy, Bastian, who steals a mysterious book from a bookseller on his way to school. He is a bookworm and a bullied child, alienated from his classmates and father. Upon arriving late, he decides to skip class and instead goes up to the attic to read the stolen book. The book is set in the magical land of Fantasia where a formless entity, The Nothing, is wreaking havoc and destroying the world. The Nothing is a metaphysical representation of the absence of all things, a symptom of a grander societal illness in human beings: people had stopped believing in fantasy, and so fantasy had ceased to exist. The only cure was to be found in a human child's imagination.<sup><a href="#31">31</a></sup> More on this later.</p>
 
                     <p>That kind of white is less a colour and more of a cleanser, a Nothing, so powerful it sucks everything into non-existence. Whatever it was, it used to be full of things, worms, ideas, rocks, networks of mycelium. It is a black hole, or a white hole, swallowing all matter, making it into a world that did not readily admit the existence of other worlds.</p>
 
-                    <p>In <i>Chromophobia</i>, Batchelor makes the argument that colour has been the object of extreme prejudice in Western culture, which has attempted to purge colour from most facets of being, by signifying it as being inferior, vulgar, feminine, or cosmetic, inessential, superficial. It is deep, it is shallow – it is both and neither, like many signifiers used at the whims of an oppressor.<sup><a href="#31">31</a></sup> Even more so than white, transparency might be the advanced stage of non-color, an aggressive non-presence, sucking everything into it.</p>
+                    <p>In <i>Chromophobia</i>, Batchelor makes the argument that colour has been the object of extreme prejudice in Western culture, which has attempted to purge colour from most facets of being, by signifying it as being inferior, vulgar, feminine, or cosmetic, inessential, superficial. It is deep, it is shallow – it is both and neither, like many signifiers used at the whims of an oppressor.<sup><a href="#32">32</a></sup> Even more so than white, transparency might be the advanced stage of non-color, an aggressive non-presence, sucking everything into it.</p>
 
-                    <p>If everything is seen, what is hiding in plain sight? In <i>The Transparency Society</i>, Korean-born German philosopher Byung-Chul Han writes that it is, in fact, control. A society of transparency preaches trust above all, at a time when trust has been massively compromised. To have everything, all information that exists, readily available leaves nothing to the imagination – and this freedom of access, trust and truthfulness morphed into a society of control. Transparency can, in that way, stabilise the dominant system, as it eliminates hidden things, and demands for standardisation and conformity. In eliminating points of orientation, it creates a flat existence, where everything has to live on the surface or it is destroyed: "Transparency makes the human being glassy. Therein lies its violence."<sup><a href="#32">32</a></sup> Han writes that this kind of transparency does not come about through illumination – it is see-through without light, it is an intrusive lightless radiation that levels and assimilates,<sup><a href="#33">33</a></sup> much like The Nothing.</p>
+                    <p>If everything is seen, what is hiding in plain sight? In <i>The Transparency Society</i>, Korean-born German philosopher Byung-Chul Han writes that it is, in fact, control. A society of transparency preaches trust above all, at a time when trust has been massively compromised. To have everything, all information that exists, readily available leaves nothing to the imagination – and this freedom of access, trust and truthfulness morphed into a society of control. Transparency can, in that way, stabilise the dominant system, as it eliminates hidden things, and demands for standardisation and conformity. In eliminating points of orientation, it creates a flat existence, where everything has to live on the surface or it is destroyed: "Transparency makes the human being glassy. Therein lies its violence."<sup><a href="#33">33</a></sup> Han writes that this kind of transparency does not come about through illumination – it is see-through without light, it is an intrusive lightless radiation that levels and assimilates,<sup><a href="#34">34</a></sup> much like The Nothing.</p>
 
                     <h3>Some Thoughts on Opacity</h3>
 
                     <p>The opposite of being transparent is being opaque – and what is more opaque than a rock? Amelia Groom wrote a book about a sculpture by Beverly Buchanan called <i>Marsh Ruins</i>.</p>
 
-                    <p>The sculptures, three mounds of various sizes, made of cement and shell-encrusted 'tabby' concrete are located in a marsh, by the side of a highway in Georgia, southeast USA. Buchanan called them 'environmental sculpture,' in that weather, season and circumstance dictate how they appear at any moment – the tides hide them, erode them, show them. Groom writes: "Far from trying to compete for attention, [Buchanan's] Ruins demand a completely different mode of looking, as they retreat from view, hiding among the vegetation, blurring with their surrounds, gradually crumbling back into the wet unstable ground, and always evading legibility."<sup><a href="#34">34</a></sup></p>
+                    <p>The sculptures, three mounds of various sizes, made of cement and shell-encrusted 'tabby' concrete are located in a marsh, by the side of a highway in Georgia, southeast USA. Buchanan called them 'environmental sculpture,' in that weather, season and circumstance dictate how they appear at any moment – the tides hide them, erode them, show them. Groom writes: "Far from trying to compete for attention, [Buchanan's] Ruins demand a completely different mode of looking, as they retreat from view, hiding among the vegetation, blurring with their surrounds, gradually crumbling back into the wet unstable ground, and always evading legibility."<sup><a href="#35">35</a></sup></p>
 
-                    <p>The importance of the material, tabby, is its direct connection to the history of slavery in the area. Enslaved people made tabby in an arduous process by first cleaning and then crushing oyster shells in fire pits, mixing them with water, ash, sand, more shells, to be poured into brick molds, to build slave cabins on the site of plantations.<sup><a href="#35">35</a></sup></p>
+                    <p>The importance of the material, tabby, is its direct connection to the history of slavery in the area. Enslaved people made tabby in an arduous process by first cleaning and then crushing oyster shells in fire pits, mixing them with water, ash, sand, more shells, to be poured into brick molds, to build slave cabins on the site of plantations.<sup><a href="#36">36</a></sup></p>
 
-                    <p>Being of stone, there is a link to permanence, solidity, a sense that it will stay and be, forever, but in Buchanan's stone works, rocks are depicted as essentially temporal – they break into pieces, erode, until they are grains of sand, to be bound together again to break apart once more. The demand to be stable, as in to not change over time, is a reinforcing of power structures – it does not allow for things hidden from view, unprotected things, unwritten histories, for they are too ephemeral. Other ways of looking are needed to grapple with the nature of these things that evade easy categorisation.<sup><a href="#36">36</a></sup></p>
+                    <p>Being of stone, there is a link to permanence, solidity, a sense that it will stay and be, forever, but in Buchanan's stone works, rocks are depicted as essentially temporal – they break into pieces, erode, until they are grains of sand, to be bound together again to break apart once more. The demand to be stable, as in to not change over time, is a reinforcing of power structures – it does not allow for things hidden from view, unprotected things, unwritten histories, for they are too ephemeral. Other ways of looking are needed to grapple with the nature of these things that evade easy categorisation.<sup><a href="#37">37</a></sup></p>
 
-                    <p>The opacity of the Marsh Ruins, their unwillingness to be obvious, their rejoicing in the unknown, and their rebelling against practices of preservation and stability is a positioning against the society of transparency. Like the French poet and philosopher Édouard Glissant wrote in his essay, "For Opacity:" "If we examine the process of 'understanding' people and ideas from the perspective of Western thought, we discover that its basis is this requirement for transparency."<sup><a href="#37">37</a></sup> Here, where power channels the direction of signs, what is allowed and what is true, power dictates who can be seen and who cannot. In a Western society of transparency, evading legibility is not allowed, as everything needs to be controlled, understood. There, a resistance against the meaning of this set of signs is formed. An artwork so specific to the history of slavery and racial violence in the USA, a world hidden from view, cannot adhere to the rules of Western transparency. The right to opacity "comes as a direct result of the colonial imposition of transparency as a universalist (and thereby homogenising) model."<sup><a href="#38">38</a></sup> Therefore, a refusal of transparency is anti-colonialist, anti-universalist, anti-imperialist.</p>
+                    <p>The opacity of the Marsh Ruins, their unwillingness to be obvious, their rejoicing in the unknown, and their rebelling against practices of preservation and stability is a positioning against the society of transparency. Like the French poet and philosopher Édouard Glissant wrote in his essay, "For Opacity:" "If we examine the process of 'understanding' people and ideas from the perspective of Western thought, we discover that its basis is this requirement for transparency."<sup><a href="#38">38</a></sup> Here, where power channels the direction of signs, what is allowed and what is true, power dictates who can be seen and who cannot. In a Western society of transparency, evading legibility is not allowed, as everything needs to be controlled, understood. There, a resistance against the meaning of this set of signs is formed. An artwork so specific to the history of slavery and racial violence in the USA, a world hidden from view, cannot adhere to the rules of Western transparency. The right to opacity "comes as a direct result of the colonial imposition of transparency as a universalist (and thereby homogenising) model."<sup><a href="#39">39</a></sup> Therefore, a refusal of transparency is anti-colonialist, anti-universalist, anti-imperialist.</p>
 
                     <h2>IV<br>To See, but Vaguely</h2>
 
                     <blockquote>
-                        Fortunately, the destiny of things protects us, for at their culmination, as they are about to verify their existence, they always undo themselves and thereby plunge back into the secret.<sup><a href="#39">39</a></sup>
+                        Fortunately, the destiny of things protects us, for at their culmination, as they are about to verify their existence, they always undo themselves and thereby plunge back into the secret.<sup><a href="#40">40</a></sup>
                     </blockquote>
 
-                    <p>A society of transparency does not allow for frivolous things such as pleasure or delight.<sup><a href="#40">40</a></sup> Delight? In this economy? Where The Nothing is a force of destruction in Fantasia, in "Why Are Americans Afraid of Dragons," American writer Ursula K. Le Guin explores the reason for such destruction of fantasy. In the essay, she writes within the context of the USA, but elaborates that she suspects "that almost all very highly technological people are more or less anti-fantasy,"<sup><a href="#41">41</a></sup> – it is not only an American phenomenon. But there, according to Le Guin, reading works of fantasy is seen as an indulgence, a pleasure – a deadly sin to the Puritan. It is not practical, it does not make money, it is time-consuming, it does not contribute to capitalism, and this repression is deeply ingrained in their sense of gender. For the last point, Le Guin writes:</p>
+                    <p>A society of transparency does not allow for frivolous things such as pleasure or delight.<sup><a href="#41">41</a></sup> Delight? In this economy? Where The Nothing is a force of destruction in Fantasia, in "Why Are Americans Afraid of Dragons," American writer Ursula K. Le Guin explores the reason for such destruction of fantasy. In the essay, she writes within the context of the USA, but elaborates that she suspects "that almost all very highly technological people are more or less anti-fantasy,"<sup><a href="#42">42</a></sup> – it is not only an American phenomenon. But there, according to Le Guin, reading works of fantasy is seen as an indulgence, a pleasure – a deadly sin to the Puritan. It is not practical, it does not make money, it is time-consuming, it does not contribute to capitalism, and this repression is deeply ingrained in their sense of gender. For the last point, Le Guin writes:</p>
 
                     <blockquote>
-                        I believe that this antifiction attitude is basically a male one. The American boy and man is very commonly forced to define his maleness by rejecting certain traits, certain human gifts and potentialities, which our culture defines as "womanish" or "childish." And one of these traits or potentialities, is, in cold sober fact, the absolutely essential human faculty of imagination.<sup><a href="#42">42</a></sup>
+                        I believe that this antifiction attitude is basically a male one. The American boy and man is very commonly forced to define his maleness by rejecting certain traits, certain human gifts and potentialities, which our culture defines as "womanish" or "childish." And one of these traits or potentialities, is, in cold sober fact, the absolutely essential human faculty of imagination.<sup><a href="#43">43</a></sup>
                     </blockquote>
 
-                    <p>Of course this is a patriarchal force. And for that matter: an imperial force, a colonial force, a racist force, a capitalist force, a sexist force – against the unknown, with fear. Once more, with fear! It is brewed with the same essence that preaches transparency above all, against incoherence, for universality, against outliers. In the smoothness of glass, a fear of dirt is ever present – and in control, a fear of freedom is found. "They are afraid of dragons, because they are afraid of freedom."<sup><a href="#43">43</a></sup> In the text, Le Guin presents a different kind of existence, a protest in the name of freedom that takes the form of the fantastic, imagination, play and pleasure.</p>
+                    <p>Of course this is a patriarchal force. And for that matter: an imperial force, a colonial force, a racist force, a capitalist force, a sexist force – against the unknown, with fear. Once more, with fear! It is brewed with the same essence that preaches transparency above all, against incoherence, for universality, against outliers. In the smoothness of glass, a fear of dirt is ever present – and in control, a fear of freedom is found. "They are afraid of dragons, because they are afraid of freedom."<sup><a href="#44">44</a></sup> In the text, Le Guin presents a different kind of existence, a protest in the name of freedom that takes the form of the fantastic, imagination, play and pleasure.</p>
 
                     <h3>Some thoughts on beauty</h3>
 
-                    <p>In her essay "Collectors, Rhymesters and Drummers," Le Guin writes about collecting, usefulness, uselessness, beauty, play, not only human but mostly in animals like birds, orangutans and beavers. The text is a mulling on why animals collect things that are special in their absolute uselessness. The objects chosen and collected are often interwoven with sexuality and aesthetics, in that they might attract mates and might pull the nest together – though I am of the wrong species to know why a crow risks its life to collect and protect a shiny thing (and what it is that draws the crow to it in the first place). They are often things to play with. Le Guin comes to some kind of conclusion on the nature of this: "Beauty is small, shapely, shiny things, like silver buttons, which you can carry home and keep in your nest/box."<sup><a href="#44">44</a></sup></p>
+                    <p>In her essay "Collectors, Rhymesters and Drummers," Le Guin writes about collecting, usefulness, uselessness, beauty, play, not only human but mostly in animals like birds, orangutans and beavers. The text is a mulling on why animals collect things that are special in their absolute uselessness. The objects chosen and collected are often interwoven with sexuality and aesthetics, in that they might attract mates and might pull the nest together – though I am of the wrong species to know why a crow risks its life to collect and protect a shiny thing (and what it is that draws the crow to it in the first place). They are often things to play with. Le Guin comes to some kind of conclusion on the nature of this: "Beauty is small, shapely, shiny things, like silver buttons, which you can carry home and keep in your nest/box."<sup><a href="#45">45</a></sup></p>
 
-                    <p>It is not only objects that are beautiful, but actions can be so too. A bird's way of communicating is through song, and birds do not only sing useful things – they play with the message, complicating them with useless whistling flurries of tone, because the pleasure of communication is not only in relaying information: "the beauty of it, as we say – is the noise: the trouble taken, the elaboration and repetition, the play."<sup><a href="#45">45</a></sup></p>
+                    <p>It is not only objects that are beautiful, but actions can be so too. A bird's way of communicating is through song, and birds do not only sing useful things – they play with the message, complicating them with useless whistling flurries of tone, because the pleasure of communication is not only in relaying information: "the beauty of it, as we say – is the noise: the trouble taken, the elaboration and repetition, the play."<sup><a href="#46">46</a></sup></p>
 
-                    <p>To define beauty as a treat! A snack, a pleasure, an illogical small shimmering thing to bring joy and satisfaction, and "faced with beauty the soul is driven to create something beautiful itself."<sup><a href="#46">46</a></sup> Beauty is play, beauty is the poetic name for being,<sup><a href="#47">47</a></sup> beauty is useful in its supposed uselessness, it is inherently opaque for its qualities are not known and can not be known. It does not adhere to the rules of transparency<sup><a href="#48">48</a></sup> – for to be opaque is to defy definition, to refuse the all-seeing eye of surveillance and oppression. Transparency claims to be truthful, trustworthy, a vision of how the future will be, but so often it is not – it is a disguise. Honesty and transparency are not the same thing – after all, Crystal Pepsi is not more healthy than regular Pepsi, it just looks like it. Transparency is an enclosing, a phenomenon that started with light shining on forces of power that, although known, had previously been hidden from view – and I agree that they needed exposing. But in opacity, a beauty, a refusal of the dominant system and a resistance against it, can appear.</p>
+                    <p>To define beauty as a treat! A snack, a pleasure, an illogical small shimmering thing to bring joy and satisfaction, and "faced with beauty the soul is driven to create something beautiful itself."<sup><a href="#47">47</a></sup> Beauty is play, beauty is the poetic name for being,<sup><a href="#48">48</a></sup> beauty is useful in its supposed uselessness, it is inherently opaque for its qualities are not known and can not be known. It does not adhere to the rules of transparency<sup><a href="#49">49</a></sup> – for to be opaque is to defy definition, to refuse the all-seeing eye of surveillance and oppression. Transparency claims to be truthful, trustworthy, a vision of how the future will be, but so often it is not – it is a disguise. Honesty and transparency are not the same thing – after all, Crystal Pepsi is not more healthy than regular Pepsi, it just looks like it. Transparency is an enclosing, a phenomenon that started with light shining on forces of power that, although known, had previously been hidden from view – and I agree that they needed exposing. But in opacity, a beauty, a refusal of the dominant system and a resistance against it, can appear.</p>
 
                     <h3>Some thoughts on translucency</h3>
 
-                    <p>In his essay on dream language and symbolism "Approaching the Unconscious," the Swiss psychoanalyst Carl G. Jung wrote: "Every concrete object is always unknown in certain respects, because we cannot know the ultimate nature of matter itself."<sup><a href="#49">49</a></sup> And there, I arrive back at the shimmer, a way of seeing things shapeshift. They might be opaque. They could also be transparent. In between, they are translucent.</p>
+                    <p>In his essay on dream language and symbolism "Approaching the Unconscious," the Swiss psychoanalyst Carl G. Jung wrote: "Every concrete object is always unknown in certain respects, because we cannot know the ultimate nature of matter itself."<sup><a href="#50">50</a></sup> And there, I arrive back at the shimmer, a way of seeing things shapeshift. They might be opaque. They could also be transparent. In between, they are translucent.</p>
 
                     <p>Do not confuse being translucent with being transparent or being invisible or opaque. To be translucent is to be of substance, let light through, but not all of it, show shapes, but vaguely. A suggestion of something beyond it, with no clarity given. It is an oscillation between stages, for things appear when looked at, and disappear when they are not – depending on perspective, some parts are covered, uncovered, emerging, secret. It is a gaze that readily admits the existence of other worlds, as it neither denies nor confirms.</p>
 
-                    <p>Truth is a process, and it is formed in an event that confers meaning and significance onto beings, onto things. But then, a new truth appears, a light is shone that does not behave the same old way, and there the relationship with the world, and understanding of reality is changed. It lets everything appear differently.<sup><a href="#50">50</a></sup></p>
+                    <p>Truth is a process, and it is formed in an event that confers meaning and significance onto beings, onto things. But then, a new truth appears, a light is shone that does not behave the same old way, and there the relationship with the world, and understanding of reality is changed. It lets everything appear differently.<sup><a href="#51">51</a></sup></p>
 
                     <p>My favourite part of shimmer is this in-between stage of emerging and hiding, when it is on the transformation path from here to not here. This is where I want to live – in translucency. An example of this is my favourite colour, or hue might be a more correct term, since I was a very young child. It only appears when I let the sun shine directly on my closed eyes for some time, preferably in a public garden or close to a body of water. Then, upon opening my eyes, everything I see is in the most brilliant colours of blue and green. It is magnificent! The sky is an even deeper blue, the clouds so bright a cyan I cannot look at them, the grass is nearly fluorescent in its shades of green, the sunrays have transformed white walls into gradients of aquamarine and turquoise, but it lasts only a moment – everything slowly fades back to its normal everyday spectrum of colours, until I close my eyes again.</p>
 
@@ -2351,8 +2223,6 @@
             setTimeout(() => {
                 historyContainer.parentElement.scrollLeft = 0;
             }, 10);
-
-            return historyColumn;
         }
 
         // Hide menu items with no essay content
@@ -2490,15 +2360,10 @@
                     enlargedImage.src = data.src;
                     enlargedImage.alt = data.alt;
                     imageModalOverlay.classList.add('open');
-                    const col = addHistoryColumn('Image', link.textContent.trim());
-                    col.classList.add('clickable');
-                    col.addEventListener('mouseenter', () => {
+                    addHistoryColumn('Image', link.textContent.trim(), () => {
                         enlargedImage.src = data.src;
                         enlargedImage.alt = data.alt;
-                            imageModalOverlay.classList.add('open');
-                    });
-                    col.addEventListener('mouseleave', () => {
-                        imageModalOverlay.classList.remove('open');
+                        imageModalOverlay.classList.add('open');
                     });
                 };
                 link.onmouseleave = () => {
@@ -2525,44 +2390,6 @@
                         videoModalOverlay.classList.add('open');
                     });
                 };
-            });
-
-            // Scroll-reveal for inline media
-            const mediaObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        mediaObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15, root: topBox });
-
-            document.querySelectorAll('.essay-media').forEach(el => {
-                mediaObserver.observe(el);
-            });
-
-            // Inline essay video players
-            document.querySelectorAll('.essay-media-player').forEach(player => {
-                const video = player.querySelector('video');
-                const fill  = player.querySelector('.essay-media-progress-fill');
-                const bar   = player.querySelector('.essay-media-progress');
-                if (!video) return;
-
-                player.addEventListener('click', (e) => {
-                    if (e.target === bar || bar.contains(e.target)) return;
-                    video.paused ? video.play() : video.pause();
-                });
-
-                video.addEventListener('timeupdate', () => {
-                    if (video.duration) {
-                        fill.style.width = (video.currentTime / video.duration * 100) + '%';
-                    }
-                });
-
-                bar.addEventListener('click', (e) => {
-                    const rect = bar.getBoundingClientRect();
-                    video.currentTime = ((e.clientX - rect.left) / rect.width) * video.duration;
-                });
             });
 
             // Game triggers
@@ -2694,19 +2521,6 @@
                 } else if (action === 'notes') {
                     sidebarRight.classList.remove('open');
                     loadNotes();
-                } else if (action === 'refresh') {
-                    topContent.innerHTML = '';
-                    topBox.classList.add('hidden');
-                    topBox.classList.remove('notes-mode', 'minimized');
-                    footnotesBody.innerHTML = '';
-                    footnotes.classList.add('hidden');
-                    footnotes.classList.remove('minimized');
-                    bibliographyBody.innerHTML = '';
-                    bibliography.classList.add('hidden');
-                    bibliography.classList.remove('minimized');
-                    sidebar.classList.remove('open');
-                    document.querySelectorAll('.grain-modal').forEach(m => m.classList.remove('visible'));
-                    sidebarRight.classList.remove('open');
                 } else if (action === 'info') {
                     if (sidebar.classList.contains('open')) {
                         sidebar.classList.remove('open');
@@ -2811,7 +2625,6 @@
         document.querySelectorAll('.minimize-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (btn.classList.contains('grain-modal-close')) return;
                 const targetId = btn.getAttribute('data-target');
                 const targetBox = document.getElementById(targetId);
 
